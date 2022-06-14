@@ -14,6 +14,6 @@ Hiện tại em chưa có dự định gì nhưng trong tương lai nếu có c�
 # Vấn đề khó khăn nhất hoặc thứ em thấy tâm đắc, ấn tượng nhất mà em đã gặp trong dự án
 Vấn đề kết nối database là thứ em cảm thấy tâm đăng nhất, bởi vì lúc đó em không có động lực để làm cũng cảm thấy não bộ từ chối, cảm thấy chán khi làm, nhưng sau khi chịu khó tìm hiểu về kết nối database thì lúc đó giống như nó tạo động lực cho em tiếp tục phát triển dự án
 # Có lịch sử commit, lưu ý khi em làm được 1 phần nhỏ trong code thì hãy commit lại
-Em có commit ở rep khác nhưng vì bị lỗi do pull request nên em đã xóa cái rep đó.
+Em có commit ở rep khác nhưng vì bị lỗi do conflic nên em đã xóa cái rep đó.
 ![image](https://user-images.githubusercontent.com/96377381/173402635-e0adeb1b-a2e1-4fe8-844d-dac92693bd87.png)
 
