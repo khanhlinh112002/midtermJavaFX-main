@@ -4,7 +4,7 @@
 # Ảnh chụp Entity Relationship Model (ERM) của database
 ![image](https://user-images.githubusercontent.com/96377381/173400478-ea779b38-410b-4a0f-b82d-a455df074d07.png)
 # Đường link tới video demo 
-https://drive.google.com/file/d/12wcd5VdJf62z-95-KWgEJcw9nyzStFLN/view?usp=sharing
+https://drive.google.com/drive/folders/1MUn7TZV9KX-7oRpMBUx7VqQgAmQk0Nrw?usp=sharing
 # Các chức năng đã làm được
 CRUD
 # Chức năng em đang làm
