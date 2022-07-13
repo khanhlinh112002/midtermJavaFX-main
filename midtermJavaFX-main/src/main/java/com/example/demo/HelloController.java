@@ -30,6 +30,10 @@ public class HelloController implements Initializable{
     @FXML
     private TextField txtIDPet;
     @FXML
+    private TextField txtQuantity;
+    @FXML
+    private TextField txtPrice;
+    @FXML
     private TextField txtSupplies;
     @FXML
     private TextField txtIDPetSup;
@@ -41,6 +45,11 @@ public class HelloController implements Initializable{
     private TableColumn<PetSupplies, String> IDSupColmn;
     @FXML
     private TableColumn<PetSupplies, String> SuppliesColmn;
+    @FXML
+    private TableColumn<PetSupplies, Integer> QuantityColumn;
+    @FXML
+    private TableColumn<PetSupplies, Integer> PriceColumn;
+
     @FXML
     private TextField txtName;
     @FXML
@@ -187,7 +196,6 @@ public class HelloController implements Initializable{
                 {
                     myIndex =  tableAnimal.getSelectionModel().getSelectedIndex();
 
-//                    id = Integer.parseInt(String.valueOf(tableAnimal.getItems().get(myIndex).getId()));
                     txtIDPetSup.setText(tableAnimal.getItems().get(myIndex).getId());
                     txtName.setText(tableAnimal.getItems().get(myIndex).getName());
 
@@ -206,7 +214,7 @@ public class HelloController implements Initializable{
         ObservableList<PetSupplies> petSupplies = FXCollections.observableArrayList();
         try
         {
-            pst = con.prepareStatement("select id,name from supplies");
+            pst = con.prepareStatement("select id,name,quantity,price from supplies");
             ResultSet rs = pst.executeQuery();
             {
                 while (rs.next())
@@ -214,12 +222,20 @@ public class HelloController implements Initializable{
                     PetSupplies st = new PetSupplies();
                     st.setId(rs.getString("id"));
                     st.setSupplies(rs.getString("name"));
+                    st.setQuantity(rs.getInt("quantity"));
+                    st.setPrice(rs.getInt("price"));
+
                     petSupplies.add(st);
                 }
             }
             tablePetSupplies.setItems(petSupplies);
             IDSupColmn.setCellValueFactory(f -> f.getValue().idProperty());
-            SuppliesColmn.setCellValueFactory(f -> f.getValue().suppliesProperty());
+            SuppliesColmn.setCellValueFactory(f->f.getValue().suppliesProperty());
+            QuantityColumn.setCellValueFactory(f->f.getValue().quantityProperty().asObject());
+            PriceColumn.setCellValueFactory(f->f.getValue().priceProperty().asObject());
+//            SuppliesColmn.setCellValueFactory(f -> f.getValue().suppliesProperty());
+
+
 
 
 
@@ -238,10 +254,13 @@ public class HelloController implements Initializable{
                 {
                     myIndex =  tablePetSupplies.getSelectionModel().getSelectedIndex();
 
-//                    id = Integer.parseInt(String.valueOf(tablePetSupplies.getItems().get(myIndex).getId()));
                     txtIDPet.setText(tablePetSupplies.getItems().get(myIndex).getId());
 
                     txtSupplies.setText(tablePetSupplies.getItems().get(myIndex).getSupplies());
+                    txtQuantity.setText(String.valueOf(tablePetSupplies.getItems().get(myIndex).getQuantity()));
+                    txtPrice.setText(String.valueOf(tablePetSupplies.getItems().get(myIndex).getPrice()));
+
+
 
 
 
@@ -258,17 +277,18 @@ public class HelloController implements Initializable{
     void Update(ActionEvent event){
         String name,id;
 
-        myIndex = tableAnimal.getSelectionModel().getSelectedIndex();
 
+        myIndex = tableAnimal.getSelectionModel().getSelectedIndex();
 //        id = tableAnimal.getItems().get(myIndex).getId();
 //        txtName.setText(tableAnimal.getItems().get(myIndex).getName());
         id = txtIDPetSup.getText();
 
         name = txtName.getText();
 
+
         try
         {
-            pst = con.prepareStatement("update pet set name = ? where id = ? ");
+            pst = con.prepareStatement("update pet set name = ?  where id = ? ");
             pst.setString(1, name);
             pst.setString(2, id);
 
